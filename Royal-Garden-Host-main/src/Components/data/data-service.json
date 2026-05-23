@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "image": "destination_4_1.jpg",
+        "bannerImg": "destination_4_1.jpg",
+        "title": "Spacious Rooms",
+        "item": "20 Listing"
+    },
+    {
+        "id": 2,
+        "image": "destination_4_2.jpg",
+        "bannerImg": "destination_4_2.jpg",
+        "title": "Comfortable Beds",
+        "item": "22 Listing"
+    },
+    {
+        "id": 3,
+        "image": "destination_4_3.jpg",
+        "bannerImg": "destination_4_3.jpg",
+        "title": "Air Conditioning",
+        "item": "23 Listing"
+    },
+    {
+        "id": 4,
+        "image": "destination_4_4.jpg",
+        "bannerImg": "destination_4_4.jpg",
+        "title": "Free Wi-Fi",
+        "item": "24 Listing"
+    },
+    {
+        "id": 5,
+        "image": "destination_4_5.jpg",
+        "bannerImg": "destination_4_5.jpg",
+        "title": "Room Service",
+        "item": "25 Listing"
+    },
+    {
+        "id": 6,
+        "image": "destination_4_6.jpg",
+        "bannerImg": "destination_4_6.jpg",
+        "title": "Hot Water",
+        "item": "26 Listing"
+    },
+    {
+        "id": 7,
+        "image": "destination_4_7.jpg",
+        "bannerImg": "destination_4_7.jpg",
+        "title": "Private Balcony",
+        "item": "27 Listing"
+    },
+    {
+        "id": 8,
+        "image": "destination_4_8.jpg",
+        "bannerImg": "destination_4_8.jpg",
+        "title": "Modern Interiors",
+        "item": "28 Listing"
+    }
+]
