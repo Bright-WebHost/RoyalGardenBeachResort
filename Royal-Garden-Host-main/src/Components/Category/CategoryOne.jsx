@@ -9,16 +9,12 @@ const CategoryOne = () => {
   const swiperRef = useRef(null);
 
   const categories = [
-    { id: 1, title: "Resort", imgSrc: "/assets/img/rgn/20.png" },
+    { id: 1, title: "Resort", imgSrc: "/assets/img/rg/116.webp" },
     { id: 2, title: "Cottage", imgSrc: "/assets/img/rg/98.webp" },
-    { id: 3, title: "Swimming Pool", imgSrc: "/assets/img/rg/96.webp" },
-    { id: 4, title: "Resort", imgSrc: "/assets/img/rgn/23.png" },
-    { id: 5, title: "Suites", imgSrc: "/assets/img/rg/97.webp" },
+    { id: 3, title: "Swimming Pool", imgSrc: "/assets/img/rg/117.webp" },
+    { id: 4, title: "Suites", imgSrc: "/assets/img/rg/118.webp" },
+    { id: 5, title: "Venue", imgSrc: "/assets/img/rg/119.webp" },
     { id: 6, title: "Guest House", imgSrc: "/assets/img/rgn/25.png" },
-    // { id: 7, title: "Hiking", imgSrc: "/assets/img/category/category_1_2.jpg" },
-    // { id: 8, title: "Airbirds", imgSrc: "/assets/img/category/category_1_3.jpg" },
-    // { id: 9, title: "Wildlife", imgSrc: "/assets/img/category/category_1_4.jpg" },
-    // { id: 10, title: "Walking", imgSrc: "/assets/img/category/category_1_5.jpg" },
   ];
 
   useEffect(() => {

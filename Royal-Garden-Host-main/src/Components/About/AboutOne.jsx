@@ -1,4 +1,4 @@
-import { CalendarHeart, Warehouse, Star, Users, Award, MapPin, ChevronDown, ChevronUp, TreePine, Coffee, Wifi, Car } from 'lucide-react'
+import { CalendarHeart, Warehouse, Star, Users, Award, MapPin, ChevronDown, ChevronUp, ShoppingBag, Trophy } from 'lucide-react'
 import React, { useState, useRef, useEffect } from 'react'
 
 /* ─── inline styles ─────────────────────────────────────── */
@@ -48,167 +48,242 @@ const BIO_STYLES = `
     transform: translateY(0);
   }
 
-  /* ── Bio section inner ── */
+  /* ── Bio section outer card ── */
   .bio-section {
     position: relative;
-    overflow: hidden;
-    background: linear-gradient(135deg, #0B3D2C 0%, #0e5038 50%, #0B3D2C 100%);
-    border-radius: 24px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e9 100%);
+    border-radius: 16px;
+    padding: 48px;
+    border-left: 5px solid #0B3D2C;
+    box-shadow: 0 8px 32px rgba(11, 61, 44, 0.1);
     margin-top: 48px;
-    padding: 52px 48px;
-    color: #fff;
-    box-shadow: 0 32px 80px rgba(11,61,44,0.35), 0 8px 24px rgba(0,0,0,0.12);
+    // padding: 48px 44px;
+    box-shadow: 0 8px 40px rgba(11,61,44,0.10);
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: center;
+    grid-template-columns: 1fr 300px;
+    gap: 40px;
+    align-items: start;
+    // border: 1px solid rgba(11,61,44,0.08);
   }
-  @media (max-width: 767px) {
-    .bio-section { grid-template-columns: 1fr; padding: 36px 24px; gap: 32px; }
-    .bio-headline { font-size: 24px !important; }
-    .bio-stats { grid-template-columns: repeat(2, 1fr) !important; }
+  /* ════════════════════════════════════════
+     RESPONSIVE BREAKPOINTS
+  ════════════════════════════════════════ */
+
+  /* ── Tablet landscape / small desktop (≤ 900px) ── */
+  @media (max-width: 900px) {
+    .bio-section {
+      grid-template-columns: 1fr;
+      padding: 36px 28px;
+      gap: 28px;
+      margin-top: 36px;
+      border-radius: 16px;
+    }
+    /* Stat cards switch to a horizontal 3-column row */
+    .bio-right {
+      flex-direction: row;
+      gap: 12px;
+    }
+    .bio-stat-card {
+      flex: 1;
+      padding: 18px 12px 14px;
+    }
+    .bio-stat-num   { font-size: 24px; }
+    .bio-stat-label { font-size: 14px; margin-bottom: 6px; }
+    .bio-stat-desc  { font-size: 11px; }
   }
 
-  /* Decorative animated circles */
-  .bio-deco-circle {
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
-  }
-  .bio-deco-circle-1 {
-    width: 220px; height: 220px;
-    top: -60px; right: 45%;
-    background: rgba(255,181,57,0.06);
-    animation: bio-float 6s ease-in-out infinite;
-  }
-  .bio-deco-circle-2 {
-    width: 140px; height: 140px;
-    bottom: -40px; left: -40px;
-    background: rgba(255,255,255,0.04);
-    animation: bio-float 8s ease-in-out infinite reverse;
+  /* ── Tablet portrait (≤ 768px) ── */
+  @media (max-width: 768px) {
+    .bio-section {
+      padding: 28px 20px;
+      gap: 24px;
+      margin-top: 28px;
+    }
+    .bio-headline  { font-size: 22px; }
+    .bio-body-para { font-size: 13px; }
+    .bio-features-grid { gap: 14px 20px; }
+    .bio-feature-title { font-size: 13px; }
+    .bio-feature-desc  { font-size: 12px; }
+    .bio-stat-num   { font-size: 22px; }
+    .bio-stat-label { font-size: 13px; }
+    .bio-stat-desc  { font-size: 11px; }
   }
 
-  @keyframes bio-float {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50%       { transform: translateY(-18px) scale(1.05); }
+  /* ── Large phone (≤ 575px) ── */
+  @media (max-width: 575px) {
+    .bio-section {
+      padding: 24px 16px;
+      gap: 20px;
+      margin-top: 24px;
+      border-radius: 14px;
+    }
+    .bio-our-story { font-size: 11px; letter-spacing: 1px; }
+    .bio-headline  { font-size: 20px; margin-bottom: 14px; }
+    .bio-body-para { font-size: 12.5px; margin-bottom: 10px; }
+    .bio-features-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 14px;
+      margin-top: 16px;
+    }
+    .bio-feature-title { font-size: 12.5px; }
+    .bio-feature-desc  { font-size: 11.5px; padding-left: 22px; }
+    .bio-right { gap: 8px; }
+    .bio-stat-card  { padding: 14px 8px 12px; border-radius: 10px; }
+    .bio-stat-num   { font-size: 20px; }
+    .bio-stat-label { font-size: 12px; margin-bottom: 4px; }
+    .bio-stat-desc  { font-size: 10px; }
+    /* Button full width */
+    .learn-more-btn {
+      width: 100%;
+      justify-content: center;
+      padding: 13px 20px;
+      font-size: 14px;
+    }
   }
 
-  /* Left column */
+  /* ── Small phone (≤ 400px) ── */
+  @media (max-width: 400px) {
+    .bio-section { padding: 18px 12px; border-radius: 12px; }
+    .bio-headline  { font-size: 18px; }
+    .bio-body-para { font-size: 12px; line-height: 1.7; }
+    /* Features collapse to 1 column on very small screens */
+    .bio-features-grid { grid-template-columns: 1fr; gap: 10px; }
+    .bio-feature-desc  { padding-left: 22px; }
+    .bio-stat-card  { padding: 12px 6px 10px; border-radius: 9px; }
+    .bio-stat-num   { font-size: 18px; }
+    .bio-stat-label { font-size: 11px; }
+    /* Hide description text at very small sizes */
+    .bio-stat-desc  { display: none; }
+  }
+
+  /* ── Left column ── */
   .bio-left { display: flex; flex-direction: column; }
 
-  /* Badge */
-  .bio-badge {
-    display: inline-flex;
+  /* OUR STORY subtitle */
+  .bio-our-story {
+    display: flex;
     align-items: center;
-    gap: 6px;
-    background: rgba(255,181,57,0.18);
-    border: 1px solid rgba(255,181,57,0.35);
-    color: #FFB539;
+    gap: 10px;
     font-family: 'Manrope', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 5px 13px;
-    border-radius: 50px;
-    letter-spacing: 0.8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #b5862a;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    width: fit-content;
     margin-bottom: 14px;
   }
-
-  /* Location pill */
-  .bio-location {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
-    padding: 5px 14px;
-    border-radius: 50px;
-    font-size: 12px;
-    color: rgba(255,255,255,0.7);
-    width: fit-content;
-    margin-bottom: 22px;
+  .bio-our-story::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 2px;
+    background: #b5862a;
+    border-radius: 2px;
   }
 
-  /* Headline */
+  /* Main headline */
   .bio-headline {
     font-family: 'Manrope', sans-serif;
-    font-size: 30px;
+    font-size: 26px;
     font-weight: 800;
-    color: #fff;
-    line-height: 1.25;
+    color: #1a1a1a;
+    line-height: 1.3;
+    margin: 0 0 20px 0;
+  }
+
+  /* Body paragraphs */
+  .bio-body-para {
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    color: #4a4a4a;
+    line-height: 1.78;
     margin: 0 0 14px 0;
   }
-  .bio-headline span { color: #FFB539; }
-
-  .bio-sub {
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    color: rgba(255,255,255,0.68);
-    margin: 0 0 28px 0;
-    line-height: 1.75;
+  .bio-body-para strong {
+    font-weight: 700;
+    color: #1a1a1a;
   }
 
-  /* Divider */
-  .bio-divider {
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, #FFB539, transparent);
-    border-radius: 2px;
-    margin-bottom: 28px;
-    animation: bio-grow 1s ease forwards;
-  }
-  @keyframes bio-grow {
-    from { width: 0; }
-    to   { width: 60px; }
-  }
-
-  /* Stats row */
-  .bio-stats {
+  /* ── Features 2x2 grid ── */
+  .bio-features-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 32px;
+    margin-top: 22px;
+  }
+  @media (max-width: 575px) {
+    .bio-features-grid { grid-template-columns: 1fr; }
+  }
+
+  .bio-feature-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .bio-feature-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 2px;
+  }
+  .bio-feature-icon {
+    color: #0B3D2C;
+    flex-shrink: 0;
+  }
+  .bio-feature-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+  .bio-feature-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+    padding-left: 26px;
+  }
+
+  /* ── Right column — stacked stat cards ── */
+  .bio-right {
+    display: flex;
+    flex-direction: column;
+    gap: 54px;
   }
 
   .bio-stat-card {
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.12);
+    background: #0B3D2C;
     border-radius: 14px;
-    padding: 16px 10px;
+    padding: 22px 22px 18px;
     text-align: center;
-    backdrop-filter: blur(8px);
-    transition: all 0.35s ease;
-    animation: bio-card-in 0.6s ease both;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: bio-card-in 0.5s ease both;
   }
   .bio-stat-card:hover {
-    background: rgba(255,181,57,0.12);
-    border-color: rgba(255,181,57,0.3);
     transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.2);
-  }
-  .bio-stat-icon {
-    width: 36px; height: 36px;
-    background: rgba(255,181,57,0.15);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 8px;
+    box-shadow: 0 14px 36px rgba(11,61,44,0.35);
   }
   .bio-stat-num {
     font-family: 'Manrope', sans-serif;
-    font-size: 22px;
+    font-size: 28px;
     font-weight: 800;
     color: #FFB539;
-    line-height: 1;
-    margin-bottom: 3px;
+    line-height: 1.1;
+    margin-bottom: 4px;
   }
   .bio-stat-label {
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
+  .bio-stat-desc {
     font-family: 'Inter', sans-serif;
-    font-size: 10px;
+    font-size: 12px;
     color: rgba(255,255,255,0.6);
-    font-weight: 500;
-    letter-spacing: 0.2px;
+    line-height: 1.4;
   }
 
   @keyframes bio-card-in {
@@ -216,66 +291,38 @@ const BIO_STYLES = `
     to   { opacity: 1; transform: translateY(0); }
   }
   .bio-stat-card:nth-child(1) { animation-delay: 0.05s; }
-  .bio-stat-card:nth-child(2) { animation-delay: 0.12s; }
-  .bio-stat-card:nth-child(3) { animation-delay: 0.19s; }
-  .bio-stat-card:nth-child(4) { animation-delay: 0.26s; }
-
-  /* Right column — image + floating quote */
-  .bio-right {
-    position: relative;
-  }
-  .bio-resort-img {
-    width: 100%;
-    border-radius: 20px;
-    object-fit: cover;
-    display: block;
-    max-height: 340px;
-    object-position: center;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-  }
-  .bio-floating-quote {
-    position: absolute;
-    top: -20px;
-    left: -20px;
-    background: rgba(11,61,44,0.82);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,181,57,0.25);
-    border-radius: 16px;
-    padding: 18px 20px;
-    max-width: 220px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-  }
-  .bio-floating-quote p {
-    font-family: 'Manrope', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    font-style: italic;
-    color: #FFB539;
-    line-height: 1.6;
-    margin: 0;
-  }
-  @media (max-width: 575px) {
-    .bio-floating-quote { display: none; }
-  }
+  .bio-stat-card:nth-child(2) { animation-delay: 0.15s; }
+  .bio-stat-card:nth-child(3) { animation-delay: 0.25s; }
 `;
 
 /* ─── Stats data ─────────────────────────────────────────── */
 const STATS = [
-  { icon: <Star size={20} color="#FFB539" />,   num: '4.9k', label: 'Happy Reviews'   },
-  { icon: <Users size={20} color="#FFB539" />,  num: '12k+', label: 'Guests Hosted'   },
-  { icon: <Award size={20} color="#FFB539" />,  num: '15+',  label: 'Years of Service' },
-  { icon: <CalendarHeart size={20} color="#FFB539" />, num: '800+', label: 'Events Hosted' },
+  { num: '500+', label: 'Events Hosted',   desc: 'Weddings, parties & corporate events' },
+  { num: '4.9★', label: 'Guest Rating',    desc: 'Consistently loved by our guests'     },
+  { num: '20+',  label: 'Premium Rooms',   desc: 'Suites, cottages & guest rooms'        },
 ];
 
-const AMENITIES = [
-  'Lush Garden Views',
-  'Spacious Event Halls',
-  'On-site Catering',
-  'Swimming Pool',
-  'Free High-Speed WiFi',
-  'Ample Parking Space',
-  'Luxury Suites',
-  'Kids Play Area',
+const FEATURES = [
+  {
+    icon: <MapPin size={26} />,
+    title: 'Prime Location',
+    desc: 'Located in Ullal, just minutes from the beach and city conveniences of Mangalore.',
+  },
+  {
+    icon: <Trophy size={26} />,
+    title: 'Award-Winning Hospitality',
+    desc: 'Consistently rated among the top beach resorts in Coastal Karnataka.',
+  },
+  {
+    icon: <Users size={26} />,
+    title: 'Perfect for Groups',
+    desc: 'Spacious venues and rooms ideal for families, weddings, and corporate events.',
+  },
+  {
+    icon: <ShoppingBag size={26} />,
+    title: 'Premium Amenities',
+    desc: 'Swimming pool, luxurious suites, open garden, and world-class event facilities.',
+  },
 ];
 
 /* ─── Component ──────────────────────────────────────────── */
@@ -382,53 +429,57 @@ function AboutOne() {
             aria-hidden={!bioOpen}
           >
             <div className="bio-section">
-              {/* decorative circles */}
-              <div className="bio-deco-circle bio-deco-circle-1" />
-              <div className="bio-deco-circle bio-deco-circle-2" />
-
               {/* ── Left column ── */}
               <div className="bio-left">
-                <span className="bio-badge">
-                  <Star size={12} /> Our Story
-                </span>
+                <div className="sub-title style1">Our Story</div>
 
-                <div className="bio-location">
-                  <MapPin size={13} color="#FFB539" />
-                  Thrissur, Kerala, India
-                </div>
-
-                <h3 className="bio-headline">
-                  Where Nature Meets <span>Luxury</span>
+                <h3 className="sec-title mb-20 pe-xl-5 me-xl-5 heading">
+                  Royal Garden Beach Resort &mdash; Where Memories Are Made
                 </h3>
-                <p className="bio-sub">
-                  Royal Garden Beach Resort was born from a simple dream — to create a place
-                  where every moment feels like a celebration. Nestled amid lush greenery,
-                  we have been crafting unforgettable experiences for over 15 years.
-                </p>
-                <div className="bio-divider" />
 
-                {/* Stats */}
-                <div className="bio-stats">
-                  {STATS.map((s, i) => (
-                    <div className="bio-stat-card" key={i}>
-                      <div className="bio-stat-icon">{s.icon}</div>
-                      <div className="bio-stat-num">{s.num}</div>
-                      <div className="bio-stat-label">{s.label}</div>
+                <p className="about-item_text">
+                  Nestled in the serene coastal town of <strong>Ullal, Karnataka</strong>, Royal Garden Beach Resort is a
+                  premier destination for those seeking a perfect blend of luxury, nature, and heartfelt
+                  hospitality. Set against a backdrop of lush tropical greenery and gentle ocean breezes, our
+                  resort offers an escape from the everyday.
+                </p><br/>
+                <p className="about-item_text">
+                  Founded with a vision to create a sanctuary where families, couples, and friends can celebrate
+                  life&apos;s most cherished moments, Royal Garden has grown into one of the coast&apos;s most beloved
+                  resort destinations. Our sprawling property features elegantly appointed rooms, premium
+                  suites, and a stunning open-air garden venue that has hosted countless weddings, receptions,
+                  corporate gatherings, and intimate celebrations.
+                </p><br/>
+                <p className="about-item_text">
+                  Our dedicated team believes that every guest deserves an experience that goes beyond
+                  expectations &mdash; from the warm welcome at arrival to the fond farewell at departure. Whether
+                  you are here for a peaceful weekend retreat, a destination wedding, or a family holiday, we
+                  ensure every detail is crafted with care.
+                </p>
+
+                {/* 2×2 feature grid */}
+                <div className="bio-features-grid">
+                  {FEATURES.map((f, i) => (
+                    <div className="bio-feature-item" key={i}>
+                      <div className="bio-feature-title-row">
+                        <span className="bio-feature-icon" >{f.icon}</span>
+                        <span className="bio-feature-title">{f.title}</span>
+                      </div>
+                      <p className="bio-feature-desc">{f.desc}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* ── Right column — image + floating quote ── */}
+              {/* ── Right column — stacked stat cards ── */}
               <div className="bio-right">
-                <div className="bio-floating-quote">
-                  <p>"A garden is a love song, a duet between a human being and Mother Nature."</p>
-                </div>
-                <img
-                  src="/assets/img/rg/63.webp"
-                  alt="Royal Garden Beach Resort aerial view"
-                  className="bio-resort-img"
-                />
+                {STATS.map((s, i) => (
+                  <div className="bio-stat-card" key={i}>
+                    <div className="bio-stat-num">{s.num}</div>
+                    <div className="bio-stat-label">{s.label}</div>
+                    <div className="about-item_text">{s.desc}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

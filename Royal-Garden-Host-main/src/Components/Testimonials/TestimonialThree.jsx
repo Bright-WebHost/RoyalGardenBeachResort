@@ -10,7 +10,7 @@ function TestimonialThree() {
 
     return (
         <section className="testi-area3 bg-bottom-center overflow-hidden space-bottom" id="testi-sec"
-            style={{ backgroundImage: "url(/assets/img/bg/3.webp)", backgroundRepeat:"no-repeat" ,marginBottom:'50px'}}>
+            style={{ backgroundImage: "url(/assets/img/rg/120.webp)", backgroundRepeat:"no-repeat" ,marginBottom:'50px',  }}>
             <div className="container">
                 <div className="title-area text-center">
                     <span className="sub-title" id='subtext2' style={{marginTop: '100px'}}>Testimonials</span>

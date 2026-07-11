@@ -18,8 +18,8 @@ function GalleryThree() {
         setIsModalOpen(false);
     };
     return (
-        <div className="overflow-hidden space-bottom">
-            <div className="container">
+        <div className="overflow-hidden space-bottom"   >
+            <div className="container" >
                 <div className="title-area text-center"><br/>
                     {/* <span className="sub-title"></span> */}
                     <h2 className="sec-title">Rooms</h2>

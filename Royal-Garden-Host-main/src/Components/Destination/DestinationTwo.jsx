@@ -4,9 +4,9 @@ import React, { useState } from "react";
 function DestinationTwo() {
     const destinations = [
         { name: "Resort", image: "50.webp", listings: 25 },
-        { name: "Home Stay", image: "49.webp", listings: 22 },
         { name: "Cottage", image: "48.webp", listings: 15 },
         { name: "Suites", image: "47.webp", listings: 28 },
+        { name: "Guest House", image: "49.webp", listings: 22 },
         
     ];
 

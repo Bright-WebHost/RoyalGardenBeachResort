@@ -130,7 +130,8 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
       background-image: url(/assets/img/bg/5.png);
-  /* background-color: red; */
+      
+  background-color: #FDF8EF;
 }
 
 iframe {
@@ -1034,6 +1035,7 @@ ul.wp-block-rss a {
     max-width: calc(var(--main-container) + var(--container-gutters));
     padding-left: calc(var(--container-gutters) / 2);
     padding-right: calc(var(--container-gutters) / 2);
+    
   }
   .container-xxl.px-0,
   .container-xl.px-0,
@@ -3115,6 +3117,15 @@ input[type=time]::-webkit-calendar-picker-indicator {
   position: relative;
   margin-bottom: -4px;
   /* Extra small devices */
+}
+.sub-title::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 2px;
+    background: linear-gradient(90deg, #A69C56, #e6d344);
+    border-radius: 1px;
+    vertical-align: middle;
 }
 
 @media (max-width: 480px) {
